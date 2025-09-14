@@ -1,4 +1,16 @@
+/*
+====================================================
+DDL Script: Create Bronze Layer
+====================================================
+Script Purpose:
+	This script uses DDL (Data Definition Language) within
+	SQL to create the 6 tables comprising the bronze layer
+	of the DataWarehouse object.The creation of the bronze
+	SCHEMA first checks for existing tables and drops them.
 
+Running this script will re-instate the Bronze schema,
+overwriting any data currently stored.
+*/
 
 -- create tables for crm data in bronze layer
 IF OBJECT_ID ('bronze.crm_cust_info', 'U') IS NOT NULL
