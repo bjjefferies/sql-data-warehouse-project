@@ -1,4 +1,24 @@
+/*
+=================================================================
+Stored Procedure: Silver Layer Load
+=================================================================
+Purpose:
+	This stored procedure loads data from the bronze schema tables to
+	the silver layer.
+	It performs the following actions:
+		- truncates the bronze tables before loading
+		- for each table, implements data quality checks, cleansing and 
+		validation to ensure data is valid and usable for end users.
 
+-- This procedure can be run each day to upload new data from the sources
+-- to the data warehouse.  Bulk insert of bronze layer data from csv.
+-- This script is converted to a stored procedure to be automated daily
+
+Parameters: None
+This stored procedure does not accept any user input parameters.
+
+Usage Example: EXEC silver.load_bronze
+*/
 
 CREATE OR ALTER PROCEDURE silver.load_silver AS
 BEGIN
