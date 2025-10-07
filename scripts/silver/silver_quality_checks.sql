@@ -259,3 +259,41 @@ SELECT DISTINCT
 		ELSE TRIM(cntry)
 	END AS cntry
 FROM bronze.erp_loc_a101
+
+
+-- erp_px_cat_g1v2
+-- small dataset of category id's
+
+SELECT * FROM silver.erp_px_cat_g1v2
+
+-- check for alignment with prd_info table (category id)
+SELECT id
+FROM silver.erp_px_cat_g1v2
+WHERE id NOT IN (SELECT cat_id FROM silver.crm_prd_info)
+
+-- check for extra spaces
+-- expect no result for clean data not needing trimmed
+SELECT cat
+FROM silver.erp_px_cat_g1v2
+WHERE cat NOT IN (SELECT TRIM(cat) FROM silver.erp_px_cat_g1v2) 
+
+SELECT *
+FROM silver.erp_px_cat_g1v2
+WHERE subcat != TRIM(subcat) OR maintenance != TRIM(maintenance)
+
+
+-- check data standardization (low cardinality columns)
+SELECT DISTINCT cat
+FROM bronze.erp_px_cat_g1v2
+
+SELECT DISTINCT subcat
+FROM bronze.erp_px_cat_g1v2
+
+SELECT DISTINCT maintenance
+FROM bronze.erp_px_cat_g1v2
+
+
+
+
+
+
