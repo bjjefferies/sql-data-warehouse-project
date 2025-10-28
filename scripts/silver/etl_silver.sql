@@ -17,7 +17,7 @@ Purpose:
 Parameters: None
 This stored procedure does not accept any user input parameters.
 
-Usage Example: EXEC silver.load_bronze
+Usage Example: EXEC silver.load_silver
 */
 
 CREATE OR ALTER PROCEDURE silver.load_silver AS
